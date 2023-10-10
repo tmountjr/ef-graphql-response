@@ -14,5 +14,8 @@
     "@edgio/core": "^7.2.8",
     "@edgio/devtools": "^7.2.8",
     "@edgio/prefetch": "^7.2.8"
+  },
+  "dependencies": {
+    "whatwg-url": "^13.0.0"
   }
 }
