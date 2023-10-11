@@ -7,7 +7,11 @@ module.exports = {
       override_host_header: "graphqlzero.almansi.me",
       hosts: [
         {
-          location: "graphqlzero.almansi.me",
+          location: {
+            hostname: "graphqlzero.almansi.me",
+            port: 443
+          },
+          scheme: 'https'
         },
       ],
       tls_verify: {
