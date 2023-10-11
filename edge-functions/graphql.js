@@ -7,11 +7,15 @@ import { URL } from 'whatwg-url'
  */
 export const handleHttpRequest = async (request) => {
   const currentUrl = new URL(request.url)
-  const newUrl = new URL(currentUrl.pathname, ['localhost', '127.0.0.1'].includes(currentUrl.hostname) ? 'https://se-apps-ef-graphql-response-default.edgio.link' : currentUrl.origin)
+  const newUrl = new URL(currentUrl.pathname, ['localhost', '127.0.0.1'].includes(currentUrl.hostname) ? 'https://graphqlzero.almansi.me' : currentUrl.origin)
 
   const newRequest = new Request(newUrl.toString(), {
     method: request.method,
-    headers: request.headers,
+    headers: {
+      ...request.headers,
+      'content-type': 'application/json',
+      'accept': 'application/json'
+    },
     body: await request.arrayBuffer()
   })
 
