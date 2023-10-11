@@ -7,7 +7,7 @@ export const handleHttpRequest = async (request) => {
   const headers = new Headers()
   const notAllowed = ['content-length', 'host']
   for (const h of request.headers.entries()) {
-    if (notAllowed.includes(h[0])) continue
+    if (notAllowed.includes(h[0].toLowerCase())) continue
     headers.append(h[0], h[1])
   }
   const newRequest = new Request(request.url, {
