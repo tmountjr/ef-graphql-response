@@ -1,5 +1,3 @@
-import { URL } from 'whatwg-url'
-
 /**
  * 
  * @param {Request} request The original request
@@ -9,7 +7,7 @@ export const handleHttpRequest = async (request) => {
   const newRequest = new Request(request.url, {
     method: request.method,
     headers: request.headers,
-    body: await request.arrayBuffer
+    body: await request.arrayBuffer()
   })
 
   const response = await fetch(newRequest, {
