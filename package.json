@@ -10,10 +10,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@edgio/cli": "^7.2.8",
-    "@edgio/core": "^7.2.8",
-    "@edgio/devtools": "^7.2.8",
-    "@edgio/prefetch": "^7.2.8"
+    "@edgio/cli": "^7.2.9-rc-1697038683-a9b65fe.0",
+    "@edgio/core": "^7.2.9-rc-1697038683-a9b65fe.0",
+    "@edgio/devtools": "^7.2.9-rc-1697038683-a9b65fe.0",
+    "@edgio/prefetch": "^7.2.9-rc-1697038683-a9b65fe.0"
   },
   "dependencies": {
     "whatwg-url": "^13.0.0"

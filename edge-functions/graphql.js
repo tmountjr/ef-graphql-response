@@ -6,17 +6,10 @@ import { URL } from 'whatwg-url'
  * @returns Response
  */
 export const handleHttpRequest = async (request) => {
-  const currentUrl = new URL(request.url)
-  const newUrl = new URL(currentUrl.pathname, ['localhost', '127.0.0.1'].includes(currentUrl.hostname) ? 'https://graphqlzero.almansi.me' : currentUrl.origin)
-
-  const newRequest = new Request(newUrl.toString(), {
+  const newRequest = new Request(request.url, {
     method: request.method,
-    headers: {
-      ...request.headers,
-      'content-type': 'application/json',
-      'accept': 'application/json'
-    },
-    body: await request.arrayBuffer()
+    headers: request.headers,
+    body: await request.arrayBuffer
   })
 
   const response = await fetch(newRequest, {
