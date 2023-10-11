@@ -23,8 +23,11 @@ export const handleHttpRequest = async (request) => {
   })
 
   // Check if this was a query or a mutation
+  // Query json: {"query": "query {\n..."}
+  // Mutation json: {"query": "mutation {\n..."}
   const reqBody = await request.json()
-  const isMutation = 'mutation' in reqBody
+  const { query } = reqBody
+  const isMutation = query.includes('mutation {\\n')
 
   if (!isMutation ) {
     response.headers.set('cache-control', 's-maxage=600')
