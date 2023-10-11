@@ -4,9 +4,15 @@
  * @returns Response
  */
 export const handleHttpRequest = async (request) => {
+  const headers = new Headers()
+  const notAllowed = ['content-length', 'host']
+  for (const h of request.headers.entries()) {
+    if (notAllowed.includes(h[0])) continue
+    headers.append(h[0], h[1])
+  }
   const newRequest = new Request(request.url, {
     method: request.method,
-    headers: request.headers,
+    headers,
     body: await request.arrayBuffer()
   })
 
