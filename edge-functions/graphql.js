@@ -25,8 +25,11 @@ export const handleHttpRequest = async (request) => {
     }
   })
 
-  const isCacheable = response.headers.get('x-cacheable')
-  if (isCacheable === 'true') {
+  // Check if this was a query or a mutation
+  const reqBody = await request.json()
+  const isMutation = 'mutation' in reqBody
+
+  if (!isMutation ) {
     response.headers.set('cache-control', 's-maxage=600')
   } else {
     response.headers.set('cache-control', 'no-cache')
